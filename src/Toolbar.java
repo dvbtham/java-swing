@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 public class Toolbar extends JPanel implements ActionListener {
 	private JButton btnHello;
 	private JButton btnGoodbye;
-	private TextPanel textPanel;
+	private StringListener textListener;
 
 	public Toolbar() {
 
@@ -27,14 +27,16 @@ public class Toolbar extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton button = (JButton) e.getSource();
 		if (button == btnHello) {
-			this.textPanel.appendText("Hello\n");
+			if(textListener != null)
+				textListener.textEmmited("Hello\n");
 		} else if (button == btnGoodbye) {
-			this.textPanel.appendText("Goodbye\n");
+			if(textListener != null)
+				textListener.textEmmited("Goodbye\n");
 		}
 	}
 
-	public void setTextPanel(TextPanel textPanel) {
-		this.textPanel = textPanel;
+	public void setStringListener(StringListener textListener) {
+		this.textListener = textListener;
 	}
 
 }

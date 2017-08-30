@@ -16,7 +16,13 @@ public class MainFrame extends JFrame implements ActionListener{
 		toolbar = new Toolbar();
 		
 		btnSubmit.addActionListener(this);
-		toolbar.setTextPanel(txtResult);
+		toolbar.setStringListener(new StringListener() {
+			
+			@Override
+			public void textEmmited(String text) {
+				txtResult.appendText(text);
+			}
+		});
 		add(toolbar, BorderLayout.NORTH);
 		add(btnSubmit, BorderLayout.SOUTH);
 		add(txtResult, BorderLayout.CENTER);
