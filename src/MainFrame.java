@@ -9,11 +9,13 @@ public class MainFrame extends JFrame implements ActionListener{
     private JButton btnSubmit;
     private TextPanel txtResult;
     private Toolbar toolbar;
+    private FormPanel formPanel;
 	public MainFrame(){
 		super("Custom component");
 		btnSubmit = new JButton("Submit");
 		txtResult = new TextPanel();
 		toolbar = new Toolbar();
+		formPanel = new FormPanel();
 		
 		btnSubmit.addActionListener(this);
 		toolbar.setStringListener(new StringListener() {
@@ -24,6 +26,7 @@ public class MainFrame extends JFrame implements ActionListener{
 			}
 		});
 		add(toolbar, BorderLayout.NORTH);
+		add(formPanel, BorderLayout.WEST);
 		add(btnSubmit, BorderLayout.SOUTH);
 		add(txtResult, BorderLayout.CENTER);
 	}
