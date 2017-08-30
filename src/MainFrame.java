@@ -16,6 +16,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		toolbar = new Toolbar();
 		
 		btnSubmit.addActionListener(this);
+		toolbar.setTextPanel(txtResult);
 		add(toolbar, BorderLayout.NORTH);
 		add(btnSubmit, BorderLayout.SOUTH);
 		add(txtResult, BorderLayout.CENTER);
