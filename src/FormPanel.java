@@ -2,6 +2,8 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -16,6 +18,8 @@ public class FormPanel extends JPanel {
 	private JTextField txtName;
 	private JTextField txtOccupation;
 	private JButton btnOk;
+	private FormListener formListener;
+	
 	public FormPanel() {
 		
 		lblName = new JLabel("Name: ");
@@ -24,6 +28,17 @@ public class FormPanel extends JPanel {
 		txtOccupation = new JTextField(10);
 		btnOk = new JButton("Ok");
 		
+		//event
+		btnOk.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String name = txtName.getText(), occupation = txtOccupation.getText();
+				FormEvent fe = new FormEvent(this, name, occupation);
+				if(formListener != null)
+					formListener.formEventOccurred(fe);
+			}
+		});
 				
 		Dimension dim = new Dimension();
 		dim.width = 250;
@@ -81,5 +96,9 @@ public class FormPanel extends JPanel {
 		gc.insets = new Insets(0, 0, 0, 0);
 		gc.anchor = GridBagConstraints.FIRST_LINE_START;
 		add(btnOk, gc);
+	}
+	
+	public void setFormListener(FormListener formListener){
+		this.formListener = formListener;
 	}
 }

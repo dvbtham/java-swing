@@ -25,6 +25,15 @@ public class MainFrame extends JFrame implements ActionListener{
 				txtResult.appendText(text);
 			}
 		});
+		
+		formPanel.setFormListener(new FormListener(){
+			public void formEventOccurred(FormEvent e){
+				String name = e.getName();
+				String occupation = e.getOppucation();
+				txtResult.appendText(name + ": " + occupation + "\n");
+			}
+		});
+		
 		add(toolbar, BorderLayout.NORTH);
 		add(formPanel, BorderLayout.WEST);
 		add(btnSubmit, BorderLayout.SOUTH);
