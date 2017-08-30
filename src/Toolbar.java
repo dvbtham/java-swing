@@ -16,4 +16,5 @@ public class Toolbar extends JPanel{
 		add(btnGoodbye);		
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 	}
+	
 }
